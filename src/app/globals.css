@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ぷよのバウンスインアニメーション */
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.2s ease-out forwards;
+}
+
+/* フェードインアニメーション */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* スライドアップアニメーション */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out forwards;
+}
+
+/* グロウエフェクト */
+@keyframes glow-pulse {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 5px currentColor);
+  }
+  50% {
+    filter: brightness(1.3) drop-shadow(0 0 20px currentColor);
+  }
+}
+
+.animate-glow {
+  animation: glow-pulse 0.5s ease-in-out infinite;
+}
+
+/* 連鎖テキストアニメーション */
+@keyframes chain-pop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-chain-pop {
+  animation: chain-pop 0.3s ease-out forwards;
+}
+
+/* キーボードスタイル */
+kbd {
+  font-family: var(--font-mono), monospace;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* スクロールバー非表示 */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* グラスモーフィズムの背景パターン */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 198, 198, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
